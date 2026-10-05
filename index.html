@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DJ Burning Sandals</title>
+<meta name="description" content="DJ Burning Sandals spins tropical funk, R&amp;B, jazz, calypso, high life, disco, afro beat and oddities. Mixes and bookings.">
+<meta property="og:title" content="DJ Burning Sandals">
+<meta property="og:description" content="Tropical funk, R&amp;B, jazz, calypso, high life, disco, afro beat and oddities.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.burningsandals.com">
+<meta property="og:image" content="https://www.burningsandals.com/images/promo.jpg">
+<link rel="canonical" href="https://www.burningsandals.com">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Karla:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --lagoon: #0E7C7B;
+    --hibiscus: #FF4F79;
+    --mango: #FFB627;
+    --palm: #123C2E;
+    --pool: #E3F7F3;
+    --ink: #123C2E;
+    --bg: var(--pool);
+    --surface: #ffffff;
+    --muted: #3d6b5c;
+    --line: rgba(18, 60, 46, .18);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #E3F7F3;
+      --bg: #0d2b21;
+      --surface: #123C2E;
+      --muted: #9fd1c2;
+      --line: rgba(227, 247, 243, .18);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #E3F7F3;
+    --bg: #0d2b21;
+    --surface: #123C2E;
+    --muted: #9fd1c2;
+    --line: rgba(227, 247, 243, .18);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Karla", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--hibiscus); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1100px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Hero: the sunset */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--lagoon);
+    color: #fff;
+    padding: clamp(2.5rem, 6vw, 5rem) 0 0;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: end;
+    gap: 2rem;
+  }
+  .wordmark {
+    font-family: "Shrikhand", "Cooper Black", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(3.6rem, 11vw, 9.5rem);
+    line-height: .86;
+    margin: 0 0 1.5rem;
+    color: var(--mango);
+    text-shadow: .045em .045em 0 var(--hibiscus), .09em .09em 0 var(--palm);
+    letter-spacing: -.01em;
+  }
+  .wordmark span { display: block; }
+  .wordmark span + span { padding-left: .5em; }
+  .dj {
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: .04em;
+    margin: 0 0 .75rem;
+    color: var(--pool);
+  }
+  .tagline {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    font-style: italic;
+    max-width: 30ch;
+    margin: 0 0 2.5rem;
+    line-height: 1.45;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: clamp(3rem, 7vw, 6rem); }
+  .btn {
+    display: inline-block;
+    font-weight: 800;
+    text-decoration: none;
+    padding: .8rem 1.4rem;
+    border-radius: 999px;
+    border: 2px solid var(--palm);
+    background: var(--mango);
+    color: var(--palm);
+    box-shadow: 4px 4px 0 var(--palm);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--palm); }
+  .btn.alt { background: var(--hibiscus); color: #fff; }
+
+  .sun {
+    position: relative;
+    justify-self: center;
+    width: min(440px, 100%);
+    aspect-ratio: 1;
+    margin-bottom: -18%;
+  }
+  .sun-disc {
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--mango);
+    border: 6px solid var(--mango);
+  }
+  .sun-disc img { width: 100%; height: 100%; object-fit: cover; }
+  .stripes {
+    position: absolute; left: -10%; right: -10%; bottom: 0; height: 48%;
+    background: repeating-linear-gradient(to bottom,
+      transparent 0 14px, var(--lagoon) 14px 26px);
+    pointer-events: none;
+  }
+  .horizon {
+    position: relative;
+    height: clamp(40px, 7vw, 70px);
+    background: var(--hibiscus);
+  }
+
+  /* Ticker: the one moving thing */
+  .ticker {
+    background: var(--palm);
+    color: var(--mango);
+    overflow: hidden;
+    border-block: 3px solid var(--mango);
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: slide 38s linear infinite;
+  }
+  .ticker ul {
+    display: flex; gap: 2.2rem; list-style: none;
+    margin: 0; padding: .85rem 1.1rem;
+    font-family: "Shrikhand", "Cooper Black", Georgia, serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    white-space: nowrap;
+  }
+  .ticker li::after { content: "✺"; margin-left: 2.2rem; color: var(--hibiscus); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; flex-wrap: wrap; width: auto; }
+    .ticker ul + ul { display: none; }
+    .ticker ul { flex-wrap: wrap; white-space: normal; row-gap: .4rem; }
+    .btn { transition: none; }
+  }
+
+  /* Mixes */
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  h2 {
+    font-family: "Shrikhand", "Cooper Black", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1;
+    margin: 0 0 .6rem;
+    color: var(--hibiscus);
+  }
+  .lede { color: var(--muted); max-width: 56ch; margin: 0 0 2.5rem; }
+  .mixes { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+  .mix { border-bottom: 2px solid var(--ink); }
+  .mix-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.3rem 0;
+  }
+  .mix h3 {
+    margin: 0;
+    font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .mix p { margin: .2rem 0 0; color: var(--muted); }
+  .play {
+    font: inherit; font-weight: 800; cursor: pointer;
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .65rem 1.2rem;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    background: transparent; color: var(--ink);
+    text-decoration: none;
+  }
+  .play:hover, .play[aria-expanded="true"] { background: var(--mango); color: var(--palm); border-color: var(--palm); }
+  .play svg { width: .9em; height: .9em; }
+  .player { padding-bottom: 1.3rem; }
+  .player iframe { width: 100%; border: 0; border-radius: 10px; display: block; }
+
+  /* About */
+  .about { background: var(--mango); color: var(--palm); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(.75rem, 2vw, 1.25rem);
+    margin-bottom: 2.75rem;
+  }
+  .gif {
+    aspect-ratio: 1;
+    background: var(--hibiscus);
+    border: 3px solid var(--palm);
+    border-radius: 18px;
+    overflow: hidden;
+  }
+  .gif:nth-child(2) { transform: rotate(2deg); background: var(--lagoon); }
+  .gif:nth-child(1) { transform: rotate(-2deg); }
+  .gif img { width: 100%; height: 100%; object-fit: cover; }
+  .about h2 { color: var(--palm); }
+  .about-text { max-width: 62ch; font-size: clamp(1.15rem, 1.8vw, 1.3rem); }
+  .about-text a { font-weight: 800; text-decoration-color: var(--hibiscus); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+
+  /* Booking */
+  .book { text-align: center; }
+  .book .lede { margin-inline: auto; }
+  .email {
+    display: inline-block;
+    font-family: "Shrikhand", "Cooper Black", Georgia, serif;
+    font-size: clamp(1.2rem, 4.4vw, 2.6rem);
+    color: var(--lagoon);
+    text-decoration: none;
+    border-bottom: 4px solid var(--hibiscus);
+    word-break: break-word;
+    line-height: 1.3;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .email { color: var(--mango); } }
+  :root[data-theme="dark"] .email { color: var(--mango); }
+
+  footer {
+    background: var(--palm); color: var(--pool);
+    padding: 1.6rem 0; font-size: .95rem;
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .sun { width: min(260px, 70%); margin-bottom: .5rem; order: -1; }
+    .hero-actions { margin-bottom: 2.5rem; }
+    .mix-row { grid-template-columns: 1fr; }
+    .play { justify-self: start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="dj">DJ and music selector</p>
+      <h1 class="wordmark"><span>Burning</span><span>Sandals</span></h1>
+      <p class="tagline">The musical taste of a mad scientist taking a break from the lab, sipping daiquiris on a Caribbean island.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#mixes">Play a mix</a>
+        <a class="btn alt" href="#book">Book a set</a>
+      </div>
+    </div>
+    <div class="sun" aria-hidden="true">
+      <div class="sun-disc"><img src="images/promo.jpg" alt="" onerror="this.remove()"></div>
+      <div class="stripes"></div>
+    </div>
+  </div>
+  <div class="horizon"></div>
+</header>
+
+<div class="ticker" aria-label="Genres">
+  <div class="ticker-track">
+    <ul>
+      <li>Tropical</li><li>Funk</li><li>R&amp;B</li><li>Jazz</li><li>Calypso</li><li>High life</li><li>Disco</li><li>Afro beat</li><li>80s oddities</li><li>Retro weirdos</li>
+    </ul>
+    <ul aria-hidden="true">
+      <li>Tropical</li><li>Funk</li><li>R&amp;B</li><li>Jazz</li><li>Calypso</li><li>High life</li><li>Disco</li><li>Afro beat</li><li>80s oddities</li><li>Retro weirdos</li>
+    </ul>
+  </div>
+</div>
+
+<main>
+  <section id="mixes">
+    <div class="wrap">
+      <h2>Mixes</h2>
+      <p class="lede">Put one on while you cook, drive or rearrange the furniture.</p>
+      <ul class="mixes" id="mix-list"></ul>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="gif"><img src="images/sandals-1.gif" alt="Burning Sandals animation one" loading="lazy" onerror="this.remove()"></div>
+        <div class="gif"><img src="images/sandals-2.gif" alt="Burning Sandals animation two" loading="lazy" onerror="this.remove()"></div>
+        <div class="gif"><img src="images/sandals-3.gif" alt="Burning Sandals animation three" loading="lazy" onerror="this.remove()"></div>
+      </div>
+      <h2>Who is this?</h2>
+      <div class="about-text">
+        <p>Burning Sandals (AKA <a href="https://www.playablestreets.com/about-artistic-director-glen-walton">Glen Walton</a>) is a DJ and music selector who spins a unique blend of tropical funk, R&amp;B, retro weirdos, jazz, calypso, high life, disco, afro beat, 80s oddities, and more. His sets are known for their eclectic mix of genres and eras, as well as a playful and colourful aesthetic.</p>
+        <p>Let Burning Sandals take you on a journey to the weird and wonderful side of music.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="book" id="book">
+    <div class="wrap">
+      <h2>Book a set</h2>
+      <p class="lede">Parties, festivals, bars, weddings and anything with a dance floor. Send the date, place and vibe.</p>
+      <a class="email" href="mailto:djburningsandals@gmail.com">djburningsandals@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>DJ Burning Sandals</span>
+    <span>Melbourne, Victoria</span>
+  </div>
+</footer>
+
+<script>
+  /*
+    EDIT YOUR MIXES HERE.
+    Paste the full Mixcloud or SoundCloud page link into "url" for each mix.
+    Mixcloud and SoundCloud links play right on the page. Any other link opens in a new tab.
+    To add a mix, copy one block. To remove one, delete its block.
+  */
+  const MIXES = [
+    { title: "Funky Tropic & Jungle Love", note: "Tropical funk", url: "" },
+    { title: "Rockin' Tropic", note: "50s and 60s R&B", url: "" },
+    { title: "Tropic Zumbando", note: "Latin tropic explosion", url: "" },
+    { title: "Tropic Vinyl Mixtape", note: "All vinyl", url: "" }
+  ];
+
+  const playIcon = '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg>';
+
+  function embedFor(url) {
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes("mixcloud.com")) {
+        return { src: "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&autoplay=1&feed=" + encodeURIComponent(u.pathname), h: 120 };
+      }
+      if (u.hostname.includes("soundcloud.com")) {
+        return { src: "https://w.soundcloud.com/player/?url=" + encodeURIComponent(url) + "&color=%23ff4f79&auto_play=true&visual=false", h: 166 };
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  const list = document.getElementById("mix-list");
+  MIXES.forEach((m, i) => {
+    const li = document.createElement("li");
+    li.className = "mix";
+    const row = document.createElement("div");
+    row.className = "mix-row";
+    row.innerHTML = `<div><h3></h3><p></p></div>`;
+    row.querySelector("h3").textContent = m.title;
+    row.querySelector("p").textContent = m.note;
+    li.appendChild(row);
+
+    if (m.url) {
+      const embed = embedFor(m.url);
+      if (embed) {
+        const btn = document.createElement("button");
+        btn.className = "play";
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-controls", "player-" + i);
+        btn.innerHTML = playIcon + "<span>Play</span>";
+        const player = document.createElement("div");
+        player.className = "player";
+        player.id = "player-" + i;
+        player.hidden = true;
+        btn.addEventListener("click", () => {
+          const open = btn.getAttribute("aria-expanded") === "true";
+          if (open) {
+            player.hidden = true; player.innerHTML = "";
+            btn.setAttribute("aria-expanded", "false");
+            btn.querySelector("span").textContent = "Play";
+          } else {
+            player.innerHTML = `<iframe height="${embed.h}" allow="autoplay" title="${m.title.replace(/"/g, "")}" src="${embed.src}"></iframe>`;
+            player.hidden = false;
+            btn.setAttribute("aria-expanded", "true");
+            btn.querySelector("span").textContent = "Close";
+          }
+        });
+        row.appendChild(btn);
+        li.appendChild(player);
+      } else {
+        const a = document.createElement("a");
+        a.className = "play"; a.href = m.url; a.target = "_blank"; a.rel = "noopener";
+        a.innerHTML = playIcon + "<span>Listen</span>";
+        row.appendChild(a);
+      }
+    }
+    list.appendChild(li);
+  });
+</script>
+</body>
+</html>
