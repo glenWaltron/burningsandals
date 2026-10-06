@@ -17,21 +17,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ffffff;
-    --ink: #111111;
-    --muted: #555555;
-    --line: #e2e2e2;
+    --bg: #E873C1;
+    --ink: #24091c;
+    --muted: #4d1a3d;
+    --line: rgba(36, 9, 28, .3);
     box-sizing: border-box;
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --bg: #141414; --ink: #f2f2f2; --muted: #b5b5b5; --line: #333; }
-  }
-  :root[data-theme="dark"] { --bg: #141414; --ink: #f2f2f2; --muted: #b5b5b5; --line: #333; }
+  /* the pink stays the same in light and dark mode */
   *, *::before, *::after { box-sizing: inherit; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: var(--bg) url("images/promo.jpg") center top / 100% auto no-repeat;
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
     font-size: 1.125rem;
@@ -42,36 +39,38 @@
   :focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
   .wrap { width: min(820px, 100% - 2.5rem); margin-inline: auto; }
 
-  /* Hero */
+  /* Hero: sits over the grey wall, page reaches the pink at about 101vw */
+  .top { position: relative; }
+  .hero h1 span { display: block; }
   .hero {
-    position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
-    display: grid;
-    place-items: start center;
-    padding: calc(env(safe-area-inset-top, 0px) + clamp(2rem, 6vh, 4rem)) 1.25rem 3rem;
-    background: #777 url("images/promo.jpg") center / cover no-repeat;
+    height: 103vw;
+    padding: calc(env(safe-area-inset-top, 0px) + 4vw) 1.25rem 0;
     color: #fff;
     text-align: center;
-  }
-  .hero::before {
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,.28), rgba(0,0,0,0) 55%);
   }
   .hero h1 {
     position: relative;
     margin: 0;
     font-family: "Archivo Black", "Arial Black", Impact, sans-serif;
     font-weight: 400;
-    font-size: clamp(3rem, 11vw, 8rem);
-    line-height: 1.08;
+    font-size: 10vw;
+    line-height: 1.04;
     letter-spacing: .01em;
-    text-shadow: 0 2px 18px rgba(0,0,0,.25);
+    text-shadow: 0 2px 14px rgba(0,0,0,.35);
   }
-  .hero h1 span { display: block; }
-
+  
+  .intro { padding: 1rem 0 0; }
+  .intro .genres { margin-top: 0; }
+  .intro .tagline { margin-top: 0; }
+  @media (min-width: 1000px) {
+    .hero h1 { font-size: 6.2vw; }
+    .intro { position: absolute; left: 0; right: 0; top: calc(4vw + 6.2vw * 1.04 * 3 + 1.6vw); padding: 0; }
+    .intro .tagline { margin-bottom: 1rem; max-width: 36ch; font-size: clamp(1.4rem, 2.1vw, 2rem); }
+    .intro .genres { margin-top: 0; }
+  }
   section { padding: clamp(3rem, 8vw, 5.5rem) 0; }
-  .gif { width: min(320px, 70%); margin: 0 auto; }
+  .gifs { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(.5rem, 2vw, 1rem); }
+  .gif { width: 100%; }
   .tagline {
     margin: clamp(2rem, 5vw, 3rem) auto;
     max-width: 30ch;
@@ -107,6 +106,8 @@
   .play:hover, .play[aria-expanded="true"] { background: var(--ink); color: var(--bg); }
   .play svg { width: .8em; height: .8em; }
   .player { padding-bottom: 1.2rem; }
+  .mix-embed { padding: 1rem 0; }
+  .mix-embed iframe { width: 100%; border: 0; display: block; }
   .player iframe { width: 100%; border: 0; display: block; }
 
   .bio { text-align: center; }
@@ -130,21 +131,17 @@
 </head>
 <body>
 
-<header class="hero">
-  <h1><span>DJ</span><span>BURNING</span><span>SANDALS</span></h1>
-</header>
+<div class="top">
+  <header class="hero">
+    <h1><span>DJ</span><span>BURNING</span><span>SANDALS</span></h1>
+  </header>
+  <div class="intro wrap">
+    <p class="genres">~ Tropical ~ Funk ~ R&amp;B ~ Jazz ~ Calypso ~ High life ~ Disco ~ Afro beat ~ Oddities ~</p>
+  </div>
+</div>
 
 <main>
-  <section>
-    <div class="wrap">
-      <img class="gif" src="images/sandals-1.gif" alt="Burning Sandals animation" onerror="this.remove()">
-      <p class="tagline">Burning Sandals has the musical taste of a mad scientist taking a break from the lab, sipping daiquiris on a Caribbean island.</p>
-      <img class="gif" src="images/sandals-2.gif" alt="Burning Sandals animation" loading="lazy" onerror="this.remove()">
-      <p class="genres">~ Tropical ~ Funk ~ R&amp;B ~ Jazz ~ Calypso ~ High life ~ Disco ~ Afro beat ~ Oddities ~</p>
-    </div>
-  </section>
-
-  <section id="mixes" style="padding-top:0">
+  <section id="mixes">
     <div class="wrap">
       <ul class="mixes" id="mix-list"></ul>
     </div>
@@ -152,8 +149,12 @@
 
   <section class="bio" style="padding-top:0">
     <div class="wrap">
-      <img class="gif" src="images/sandals-3.gif" alt="Burning Sandals animation" loading="lazy" onerror="this.remove()">
-      <p>Burning Sandals (AKA <a href="https://www.playablestreets.com/about-artistic-director-glen-walton">Glen Walton</a>) is a DJ and music selector who spins a unique blend of tropical funk, R&amp;B, retro weirdos, jazz, calypso, high life, disco, afro beat, 80s oddities, and more. His sets are known for their eclectic mix of genres and eras, as well as a playful and colourful aesthetic. Let Burning Sandals take you on a journey to the weird and wonderful side of music.</p>
+      <div class="gifs">
+        <img class="gif" src="images/sandals-1.gif" alt="Burning Sandals animation" loading="lazy" onerror="this.remove()">
+        <img class="gif" src="images/sandals-2.gif" alt="Burning Sandals animation" loading="lazy" onerror="this.remove()">
+        <img class="gif" src="images/sandals-3.gif" alt="Burning Sandals animation" loading="lazy" onerror="this.remove()">
+      </div>
+      <p>Burning Sandals (AKA <a href="http://glenwalton.art/">Glen Walton</a>) is a DJ and music selector who spins a unique blend of tropical funk, R&amp;B, retro weirdos, jazz, calypso, high life, disco, afro beat, 80s oddities, and more. His sets are known for their eclectic mix of genres and eras, as well as a playful and colourful aesthetic. Let Burning Sandals take you on a journey to the weird and wonderful side of music.</p>
       <a class="email" href="mailto:djburningsandals@gmail.com">djburningsandals@gmail.com</a>
     </div>
   </section>
@@ -169,10 +170,10 @@
     (for example a direct .mp3 link) opens in a new tab.
   */
   const MIXES = [
-    { title: "Funky Tropic & Jungle Love", note: "DJ Burning Sandals", url: "" },
-    { title: "Rockin' Tropic: 50s & 60s R&B", note: "DJ Burning Sandals", url: "" },
-    { title: "Tropic Zumbando: Latin Tropic Explosion", note: "DJ Burning Sandals", url: "" },
-    { title: "Tropic Vinyl Mixtape", note: "DJ Burning Sandals", url: "" }
+    { title: "Funky Tropic & Jungle Love", note: "DJ Burning Sandals", url: "https://www.mixcloud.com/djburningsandals/funky-tropic-jungle-love/" },
+    { title: "Rockin' Tropic: 50s & 60s R&B", note: "DJ Burning Sandals", url: "https://www.mixcloud.com/djburningsandals/rockin-tropic-50s-60s-rb/" },
+    { title: "Tropic Zumbando: Latin Tropic Explosion", note: "DJ Burning Sandals", url: "https://www.mixcloud.com/djburningsandals/tropic-zumbando-latin-tropic-explosion/" },
+    { title: "Tropic Vinyl Mixtape", note: "DJ Burning Sandals", url: "https://www.mixcloud.com/djburningsandals/tropic-vinyl-mixtape/" }
   ];
 
   const playIcon = '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg>';
@@ -181,10 +182,10 @@
     try {
       const u = new URL(url);
       if (u.hostname.includes("mixcloud.com")) {
-        return { src: "https://player-widget.mixcloud.com/widget/iframe/?hide_cover=1&light=1&autoplay=1&feed=" + encodeURIComponent(u.pathname), h: 120 };
+        return { src: "https://player-widget.mixcloud.com/widget/iframe/?feed=" + encodeURIComponent(u.pathname), h: 120, inline: true };
       }
       if (u.hostname.includes("soundcloud.com")) {
-        return { src: "https://w.soundcloud.com/player/?url=" + encodeURIComponent(url) + "&color=%23111111&auto_play=true&visual=false", h: 166 };
+        return { src: "https://w.soundcloud.com/player/?url=" + encodeURIComponent(url) + "&color=%2324091c&auto_play=true&visual=false", h: 166 };
       }
     } catch (e) {}
     return null;
@@ -202,6 +203,12 @@
     li.appendChild(row);
     if (m.url) {
       const embed = embedFor(m.url);
+      if (embed && embed.inline) {
+        li.className = "mix mix-embed";
+        li.innerHTML = '<iframe height="' + embed.h + '" loading="lazy" allow="encrypted-media; fullscreen; autoplay" title="' + m.title.replace(/"/g, "") + '" src="' + embed.src + '"></iframe>';
+        list.appendChild(li);
+        return;
+      }
       if (embed) {
         const btn = document.createElement("button");
         btn.className = "play";
